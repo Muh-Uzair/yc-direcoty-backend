@@ -79,7 +79,11 @@ export const getCurrUser = async (
     }
 
     // Extract the token string
-    const token = authHeader.split(" ")[1]; // "Bearer token" => ["Bearer", "token"]
+    const token = authHeader.split(" ")[1];
+
+    if (!token) {
+      return next(new AppError("Token is not provided", 401));
+    }
 
     // 2 : verify jwt
     const jwtSecret = process.env.JWT_SECRET as string;
@@ -93,7 +97,7 @@ export const getCurrUser = async (
     const user = await UserModel.findById(userId);
 
     if (!user) {
-      return next(new AppError("User does not exists", 400));
+      return next(new AppError("User does not exists", 401));
     }
 
     //  : send response
