@@ -11,6 +11,7 @@ import hpp from "hpp";
 import mongoSanitize from "mongo-sanitize";
 import { globalErrorHandler } from "@/controllers/error-controller";
 import userRouter from "@/routes/user-routes";
+import startupRouter from "@/routes/startup-routes";
 
 dotenv.config({ path: "./config.env" });
 
@@ -78,6 +79,7 @@ app.use((req, res, next) => {
 
 // rotes
 app.use("/api/v1/users", userRouter);
+app.use("/api/v1/startup", startupRouter);
 
 // Handle unknown routes (404)
 app.use((req: Request, res: Response) => {
