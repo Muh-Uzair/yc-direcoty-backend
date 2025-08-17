@@ -4,7 +4,13 @@ import { model } from "mongoose";
 
 const StartupSchema: Schema<IStartup> = new Schema(
   {
-    name: { type: String, required: true, minlength: 2, maxlength: 20 },
+    name: {
+      type: String,
+      required: true,
+      minlength: 2,
+      maxlength: 20,
+      unique: true,
+    },
     tagline: { type: String, required: true, minlength: 5, maxlength: 160 },
     industry: {
       type: String,
@@ -63,6 +69,8 @@ const StartupSchema: Schema<IStartup> = new Schema(
   },
   { timestamps: true }
 );
+
+StartupSchema.index({ name: 1 }, { unique: true });
 
 StartupSchema.set("toJSON", {
   transform: function (doc, ret) {
