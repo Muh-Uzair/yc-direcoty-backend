@@ -10,6 +10,7 @@ export const globalErrorHandler = (
   res: Response
 ) => {
   console.log("Global error handler triggered");
+  console.log(err);
 
   // Handle known AppError
   if (err instanceof AppError) {

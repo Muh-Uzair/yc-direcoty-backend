@@ -70,8 +70,6 @@ const StartupSchema: Schema<IStartup> = new Schema(
   { timestamps: true }
 );
 
-StartupSchema.index({ name: 1 }, { unique: true });
-
 StartupSchema.set("toJSON", {
   transform: function (doc, ret) {
     delete (ret as any).__v;
