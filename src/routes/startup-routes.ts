@@ -61,5 +61,6 @@ router.patch(
 );
 
 router.get("/all/dashboard/home", getAllStartupsDashboardHome);
+router.get("/dashboard/home/:id", getStartupOnId);
 
 export default router;
