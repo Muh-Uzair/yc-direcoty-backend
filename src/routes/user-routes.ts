@@ -2,7 +2,7 @@ import {
   getCurrUser,
   userSignup,
   userSigning,
-} from "@/controllers/user-controller";
+} from "../controllers/user-controller";
 import express, { Router } from "express";
 
 const router: Router = express.Router();

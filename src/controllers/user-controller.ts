@@ -1,8 +1,8 @@
 import bcrypt from "bcrypt";
 import jwt, { SignOptions } from "jsonwebtoken";
 import { Request, Response, NextFunction } from "express";
-import { UserModel } from "@/models/user-model";
-import { AppError } from "@/utils/AppError";
+import { UserModel } from "../models/user-model";
+import { AppError } from "../utils/AppError";
 
 // FUNCTION
 export const userSignup = async (

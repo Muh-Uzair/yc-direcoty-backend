@@ -6,7 +6,7 @@ import {
   getStartupOnId,
   updateStartupOnId,
   getAllStartupsDashboardHome,
-} from "@/controllers/startup-controller";
+} from "../controllers/startup-controller";
 import express, { Router } from "express";
 import multer from "multer";
 

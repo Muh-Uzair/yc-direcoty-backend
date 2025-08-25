@@ -1,4 +1,4 @@
-import { IStartup } from "@/types/startup-types";
+import { IStartup } from "../types/startup-types";
 import mongoose, { Schema } from "mongoose";
 import { model } from "mongoose";
 

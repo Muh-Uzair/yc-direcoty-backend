@@ -1,7 +1,7 @@
-import StartupModel from "@/models/startup-model";
-import { UserModel } from "@/models/user-model";
-import { IStartup, IUploadedFiles } from "@/types/startup-types";
-import { AppError } from "@/utils/AppError";
+import StartupModel from "../models/startup-model";
+import { UserModel } from "../models/user-model";
+import { IStartup, IUploadedFiles } from "../types/startup-types";
+import { AppError } from "../utils/AppError";
 import { Request, Response, NextFunction } from "express";
 import jwt, { JsonWebTokenError, TokenExpiredError } from "jsonwebtoken";
 

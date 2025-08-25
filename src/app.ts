@@ -9,9 +9,9 @@ import rateLimit from "express-rate-limit";
 import helmet from "helmet";
 import hpp from "hpp";
 import mongoSanitize from "mongo-sanitize";
-import { globalErrorHandler } from "@/controllers/error-controller";
-import userRouter from "@/routes/user-routes";
-import startupRouter from "@/routes/startup-routes";
+import userRouter from "../src/routes/user-routes";
+import startupRouter from "./routes/startup-routes";
+import { globalErrorHandler } from "./controllers/error-controller";
 
 dotenv.config({ path: "./config.env" });
 
@@ -27,11 +27,7 @@ app.use(express.json({ limit: "10kb" }));
 app.use(cookieParser());
 
 // parameter pollution to remove duplicate query params
-app.use(
-  hpp({
-    whitelist: ["rent"],
-  })
-);
+app.use(hpp({}));
 
 // setting cors
 app.use(
@@ -53,6 +49,8 @@ const limiter = rateLimit({
   message: "Too many requests.",
 });
 app.use(limiter);
+
+app.set("trust proxy", 1);
 
 // sanitizing against sql query injection
 app.use((req, res, next) => {
@@ -78,6 +76,12 @@ app.use((req, res, next) => {
 });
 
 // rotes
+app.get("/", (req: Request, res: Response) => {
+  res.status(200).json({
+    status: "success",
+    message: "Welcome to yc-directory backend",
+  });
+});
 app.use("/api/v1/users", userRouter);
 app.use("/api/v1/startup", startupRouter);
 
